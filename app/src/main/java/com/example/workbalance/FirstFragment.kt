@@ -1,4 +1,4 @@
-package com.example.workbalancev3
+package com.example.workbalance
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

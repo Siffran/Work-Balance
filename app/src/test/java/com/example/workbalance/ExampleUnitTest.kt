@@ -1,4 +1,4 @@
-package com.example.workbalancev3
+package com.example.workbalance
 
 import org.junit.Test
 
