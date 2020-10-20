@@ -65,14 +65,6 @@ class FirstFragment : Fragment() {
             .setNegativeButtonText("Use account password")
             .build()
 
-        // Prompt appears when user clicks "Log in".
-        // Consider integrating with the keystore to unlock cryptographic operations,
-        // if needed by your app.
-        val biometricLoginButton = view.findViewById<Button>(R.id.biometric_login)
-        biometricLoginButton.setOnClickListener {
-            biometricPrompt.authenticate(promptInfo)
-        }
-
         view.findViewById<Button>(R.id.button_first).setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
