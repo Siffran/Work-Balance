@@ -6,6 +6,9 @@ import android.view.MenuItem
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +21,12 @@ class MainActivity : AppCompatActivity() {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main)
+
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        findViewById<NavigationView>(R.id.navigationDrawer)
+            .setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
