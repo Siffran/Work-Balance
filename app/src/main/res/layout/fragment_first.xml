@@ -11,7 +11,7 @@
         android:layout_width="139dp"
         android:layout_height="88dp"
         android:layout_marginTop="196dp"
-        android:src="@drawable/ic_gmail"
+        android:src="@drawable/ic_logo_shadow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
