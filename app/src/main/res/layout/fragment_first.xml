@@ -11,12 +11,11 @@
         android:layout_width="139dp"
         android:layout_height="88dp"
         android:layout_marginTop="196dp"
+        android:contentDescription="@string/gmail_logo"
         android:src="@drawable/ic_logo_shadow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/gmail_logo" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/sign_in"
@@ -32,14 +31,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
         android:background="@drawable/account_spinner"
-        app:layout_constraintBottom_toTopOf="@+id/sign_in"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.13999999">
+        app:layout_constraintVertical_bias="0.100000024">
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner04"

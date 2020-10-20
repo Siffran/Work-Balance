@@ -42,6 +42,7 @@ class FirstFragment : Fragment() {
                     Toast.makeText(context,
                         "Authentication error: $errString", Toast.LENGTH_SHORT)
                         .show()
+                    findNavController().navigate(R.id.action_FirstFragment_to_loginPassword)
                 }
 
                 override fun onAuthenticationSucceeded(
