@@ -1,6 +1,5 @@
 package com.example.workbalance
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -19,8 +18,6 @@ class MainActivity : AppCompatActivity() {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_main)
-        //setSupportActionBar(findViewById(R.id.toolbar))
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -15,7 +15,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/gmail_logo" />
 
     <Button
         android:id="@+id/button_first"
@@ -24,24 +25,28 @@
         android:layout_height="42dp"
         android:layout_marginBottom="28dp"
         android:background="@drawable/log_in_button"
-        android:text="Sign in"
-        android:textSize="20dp"
+        android:text="@string/sign_in"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        style="@android:style/Widget.Holo.Light.Spinner"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="16dp"
-        android:entries="@array/temp_email"
-        android:textAlignment="center"
+        android:background="@drawable/account_spinner"
         app:layout_constraintBottom_toTopOf="@+id/button_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.13999999">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></androidx.appcompat.widget.AppCompatSpinner>
+    </RelativeLayout>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
+import kotlinx.android.synthetic.main.fragment_first.*
 import java.util.concurrent.Executor
 
 private lateinit var executor: Executor
@@ -68,5 +69,13 @@ class FirstFragment : Fragment() {
         view.findViewById<Button>(R.id.button_first).setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
+
+        val work: AccountModel = AccountModel("Work@work.com","ic_account_circle")
+        val private: AccountModel = AccountModel("Private@home.com","ic_account_circle")
+
+        val modelList: List<AccountModel> = listOf(work, private)
+
+        val customDropDownAdapter = context?.let { CustomDropDownAdapter(it, modelList) }
+        spinner04.adapter = customDropDownAdapter
     }
 }
