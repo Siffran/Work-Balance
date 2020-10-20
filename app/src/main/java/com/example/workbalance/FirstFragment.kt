@@ -54,7 +54,6 @@ class FirstFragment : Fragment() {
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
                     Toast.makeText(context, "Authentication failed", Toast.LENGTH_SHORT).show()
-                    findNavController()
                 }
             })
 
