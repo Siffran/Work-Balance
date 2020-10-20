@@ -52,12 +52,12 @@ class LoginPassword : Fragment() {
         imgr.showSoftInput(editTextTextPassword, InputMethodManager.SHOW_IMPLICIT)
 
         // Adding listener to check pass/change view on enter click
-        editTextTextPassword.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+        editTextTextPassword.setOnKeyListener(View.OnKeyListener { _, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
 
                 // Hiding keyboard
                 val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm?.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+                imm.hideSoftInputFromWindow(view.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
 
                 // Navigating to next view
                 findNavController().navigate(R.id.action_loginPassword_to_SecondFragment)

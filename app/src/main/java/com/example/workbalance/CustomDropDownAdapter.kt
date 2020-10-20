@@ -50,7 +50,7 @@ class CustomDropDownAdapter(val context: Context, var dataSource: List<AccountMo
 
         init {
             label = row?.findViewById(R.id.text) as TextView
-            img = row?.findViewById(R.id.img) as ImageView
+            img = row.findViewById(R.id.img) as ImageView
         }
     }
 
