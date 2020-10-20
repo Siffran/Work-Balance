@@ -47,27 +47,26 @@ class FirstFragment : Fragment() {
                 override fun onAuthenticationSucceeded(
                     result: BiometricPrompt.AuthenticationResult) {
                     super.onAuthenticationSucceeded(result)
-                    Toast.makeText(context,
-                        "Authentication succeeded!", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(context, "Authentication succeeded!", Toast.LENGTH_SHORT).show()
+                    findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
                 }
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
-                    Toast.makeText(context, "Authentication failed",
-                        Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(context, "Authentication failed", Toast.LENGTH_SHORT).show()
+                    findNavController()
                 }
             })
 
         promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Fingerpirnt login for YourMail")
+            .setTitle("Fingerprint login")
             .setSubtitle("Log in using your fingerprint")
             .setNegativeButtonText("Use account password")
             .build()
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        val biometricLoginButton = view.findViewById<Button>(R.id.sign_in)
+        biometricLoginButton.setOnClickListener {
+            biometricPrompt.authenticate(promptInfo);
         }
 
         val work: AccountModel = AccountModel("Work@work.com","ic_account_circle")
