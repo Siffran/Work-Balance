@@ -25,6 +25,9 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Enabling drawer
+        (activity as MainActivity).enableDrawer()
+
 
         // Pupulating email list
         val exampleList = generateDummyList(15)

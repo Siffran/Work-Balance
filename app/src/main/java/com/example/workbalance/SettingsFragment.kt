@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_second.*
 import kotlinx.android.synthetic.main.fragment_settings.*
@@ -19,8 +20,8 @@ class SettingsFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         backButton.setOnClickListener {
-            // TODO as of now back button allways go to first fragment
-            (activity as MainActivity).backButton();
+//            (activity as MainActivity).backButton();
+            findNavController().navigate(R.id.action_settingsFragment_to_SecondFragment)
         }
 
     }

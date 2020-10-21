@@ -53,6 +53,14 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.openDrawer(Gravity.LEFT)
     }
 
+    public fun dissableDrawer(){
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+    }
+
+    public fun enableDrawer(){
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+    }
+
     // Function for implementing soft back buttons
     public  fun backButton(){
         super.onBackPressed()

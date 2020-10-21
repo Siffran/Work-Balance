@@ -37,6 +37,9 @@ class LoginPassword : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Locking drawer
+        (activity as MainActivity).dissableDrawer()
+
         // Populating account selection spinner
         // TODO select same account as on first page.
         val work: AccountModel = AccountModel("Work@work.com", "ic_account_circle")

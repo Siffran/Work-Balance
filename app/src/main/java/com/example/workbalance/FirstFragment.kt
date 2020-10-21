@@ -34,6 +34,9 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Disabling drawer
+        (activity as MainActivity).dissableDrawer()
+
         executor = ContextCompat.getMainExecutor(context)
         biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
