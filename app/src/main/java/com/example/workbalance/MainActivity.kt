@@ -53,4 +53,9 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.openDrawer(Gravity.LEFT)
     }
 
+    // Function for implementing soft back buttons
+    public  fun backButton(){
+        super.onBackPressed()
+    }
+
 }
