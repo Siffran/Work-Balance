@@ -16,8 +16,8 @@
             android:icon="@drawable/ic_unsubscribe_24px"
             />
         <item
-            android:title="Settings"
+            android:id="@+id/settingsFragment"
             android:icon="@drawable/ic_settings_24px"
-            />
+            android:title="Settings" />
     </group>
 </menu>

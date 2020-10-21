@@ -12,7 +12,8 @@
         android:id="@+id/navigationDrawer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_gravity = "start"
-        app:menu="@menu/drawer_menu"/>
+        android:layout_gravity="start"
+        android:backgroundTint="#B6EDF4"
+        app:menu="@menu/drawer_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
