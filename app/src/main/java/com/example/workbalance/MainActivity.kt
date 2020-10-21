@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity() {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         //Remove notification bar
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        );
 
         setContentView(R.layout.activity_main)
 
@@ -53,16 +56,16 @@ class MainActivity : AppCompatActivity() {
         drawerLayout.openDrawer(Gravity.LEFT)
     }
 
-    public fun dissableDrawer(){
+    public fun dissableDrawer() {
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
     }
 
-    public fun enableDrawer(){
+    public fun enableDrawer() {
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
     }
 
     // Function for implementing soft back buttons
-    public  fun backButton(){
+    public fun backButton() {
         super.onBackPressed()
     }
 

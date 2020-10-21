@@ -2,22 +2,26 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group>
+
+        <!--        <item-->
+        <!--            android:id="@+id/loginPassword"-->
+        <!--            android:title="Password"-->
+        <!--            android:icon="@drawable/ic_account_circle" />-->
         <item
-            android:id="@+id/FirstFragment"
-            android:title="Log out"
-            android:icon="@drawable/ic_account_circle" />
-<!--        TODO REMOVE LOGINPASSWORD, its there to show how to navigate to another page-->
+            android:id="@+id/SecondFragment"
+            android:icon="@drawable/ic_vector"
+            android:title="Inbox" />
         <item
-            android:id="@+id/loginPassword"
-            android:title="Password"
-            android:icon="@drawable/ic_account_circle" />
-        <item
-            android:title="Spam"
             android:icon="@drawable/ic_unsubscribe_24px"
-            />
+            android:title="Spam" />
         <item
             android:id="@+id/settingsFragment"
             android:icon="@drawable/ic_settings_24px"
             android:title="Settings" />
+
+        <item
+            android:id="@+id/FirstFragment"
+            android:icon="@drawable/ic_account_circle"
+            android:title="Log out" />
     </group>
 </menu>
