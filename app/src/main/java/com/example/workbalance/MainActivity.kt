@@ -1,16 +1,16 @@
 package com.example.workbalance
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.Window
-import android.view.WindowManager
+import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         findViewById<NavigationView>(R.id.navigationDrawer)
             .setupWithNavController(navController)
+
+        // Finding the drawerlayout
+        drawerLayout = findViewById(R.id.drawerLayout);
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -44,4 +47,10 @@ class MainActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+    // Function for opening the drawer
+    public fun openDrawer(view: View) {
+        drawerLayout.openDrawer(Gravity.LEFT)
+    }
+
 }

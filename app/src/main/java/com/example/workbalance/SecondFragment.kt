@@ -5,8 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
+import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_second.*
 
@@ -27,11 +26,18 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
+        // Pupulating email list
         val exampleList = generateDummyList(15)
         recyclerView.adapter = CustomEmailAdapter(exampleList)
         recyclerView.layoutManager = LinearLayoutManager(activity?.applicationContext)
         recyclerView.setHasFixedSize(true)
+
+        //Opening drawer on menu button click
+        val menubtn = view.findViewById<ImageButton>(R.id.menu_button)
+        menubtn.setOnClickListener {
+            (activity as MainActivity).openDrawer(view);
+        }
+
     }
 
     private fun generateDummyList(size : Int): List<EmailItem>{
