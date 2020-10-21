@@ -77,4 +77,19 @@
             android:src="@drawable/ic_vector_3" />
 
     </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/menu_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="11dp"
+        app:layout_constraintEnd_toStartOf="@+id/search_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="#70FFFFFF"
+        android:src="@drawable/ic_menu_24px"
+        android:scaleY="1.4"
+        android:scaleX="1.4"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
