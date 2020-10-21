@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_first.spinner04
 import kotlinx.android.synthetic.main.fragment_login_password.*
+import java.util.*
 
 
 class LoginPassword : Fragment() {
@@ -44,6 +45,22 @@ class LoginPassword : Fragment() {
         val modelList: List<AccountModel> = listOf(work, private)
         val customDropDownAdapter = context?.let { CustomDropDownAdapter(it, modelList) }
         spinner04.adapter = customDropDownAdapter
+
+        // Pre-selecting correct item in spinner
+        val cal = Calendar.getInstance()
+        val tz = TimeZone.getTimeZone("GMT+2")
+        cal.timeZone = tz
+        val day = cal.get(Calendar.DAY_OF_WEEK)
+        if(day == 1 || day == 7){
+            // Its weekend, relax lol
+        } else{
+            val time = cal.get(Calendar.HOUR_OF_DAY)
+            if (9 < time && time < 17){
+                spinner04.setSelection(0)
+            } else{
+                spinner04.setSelection(1)
+            }
+        }
 
         // Requesting focus to password field and opening keyboard
         editTextTextPassword.requestFocus()
