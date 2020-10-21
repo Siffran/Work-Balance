@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // Function for opening the drawer
-    public fun openDrawer(view: View) {
+    public fun openDrawer() {
         drawerLayout.openDrawer(Gravity.LEFT)
     }
 

@@ -35,7 +35,7 @@ class SecondFragment : Fragment() {
         //Opening drawer on menu button click
         val menubtn = view.findViewById<ImageButton>(R.id.menu_button)
         menubtn.setOnClickListener {
-            (activity as MainActivity).openDrawer(view);
+            (activity as MainActivity).openDrawer();
         }
 
     }
