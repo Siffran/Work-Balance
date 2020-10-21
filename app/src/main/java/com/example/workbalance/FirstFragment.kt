@@ -89,6 +89,19 @@ class FirstFragment : Fragment() {
         spinner04.adapter = customDropDownAdapter
 
         // Pre-selecting correct item in spinner
+        //Location
+
+        //Location
+        (activity as MainActivity).locationReady = false
+        (activity as MainActivity).getLocationWithPermissionCheck()
+
+        // Crash
+        //while((activity as MainActivity).locationReady == false){}
+
+        //Toast.makeText(context, (activity as MainActivity).locationCurrent.toString(), Toast.LENGTH_LONG ).show()
+
+
+        //Time
         val cal = Calendar.getInstance()
         val tz = TimeZone.getTimeZone("GMT+2")
         cal.timeZone = tz

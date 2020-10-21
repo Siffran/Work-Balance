@@ -1,16 +1,27 @@
 package com.example.workbalance
 
+import android.Manifest
+import android.location.Location
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.android.material.navigation.NavigationView
+import permissions.dispatcher.NeedsPermission
+import permissions.dispatcher.RuntimePermissions
 
+@RuntimePermissions
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var drawerLayout: DrawerLayout
+    lateinit var locationCurrent: Location
+    var locationReady = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +44,33 @@ class MainActivity : AppCompatActivity() {
 
         // Finding the drawerlayout
         drawerLayout = findViewById(R.id.drawerLayout);
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
     }
+
+    /*
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        // NOTE: delegate the permission handling to generated method
+        onRequestPermissionsResult(requestCode, grantResults)
+    }*/
+
+    @NeedsPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+    fun getLocation() {
+        Toast.makeText(this, "facking shiiiit", Toast.LENGTH_LONG).show()
+
+        fusedLocationProviderClient.lastLocation
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful && task.result != null) {
+                    locationCurrent = task.result
+                    locationReady = true
+                    Toast.makeText(this, locationCurrent.toString(), Toast.LENGTH_LONG).show()
+                }
+            }
+
+    }
+
+    //-------------------------------------------------------------------------//
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
