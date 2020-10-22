@@ -16,9 +16,14 @@ import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.fragment_first.spinner04
 import kotlinx.android.synthetic.main.fragment_login_password.*
 import java.util.*
+import kotlin.math.abs
+import androidx.lifecycle.Observer
+
 
 
 class LoginPassword : Fragment() {
+
+    private var initdone = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,17 +55,42 @@ class LoginPassword : Fragment() {
         spinner04.adapter = customDropDownAdapter
 
         // Pre-selecting correct item in spinner
+        // Setting up location Location
+        (activity as MainActivity).locationLoco.observe(viewLifecycleOwner, Observer {
+            if (initdone > 0) {
+                var diffLat = (activity as MainActivity).locationCurrent.latitude - 57.689167
+                var difflong = (activity as MainActivity).locationCurrent.longitude - 11.973611
+
+                if (abs(diffLat) < 0.01 && abs(difflong) < 0.01) {
+                    spinner04.setSelection(0)
+                } else {
+                    if (spinner04.selectedItemPosition == 0) {
+                        // Its working hours, perhaps working from home?
+                    } else {
+                        // Not working hours and not at work!
+                        spinner04.setSelection(1)
+                    }
+                }
+            }
+            initdone++
+        })
+
+        // Requesting update of location
+        (activity as MainActivity).getLocationWithPermissionCheck()
+
+        // Selecting depending on Time
         val cal = Calendar.getInstance()
         val tz = TimeZone.getTimeZone("GMT+2")
         cal.timeZone = tz
         val day = cal.get(Calendar.DAY_OF_WEEK)
-        if(day == 1 || day == 7){
+        if (day == 1 || day == 7) {
             // Its weekend, relax lol
-        } else{
+            spinner04.setSelection(1)
+        } else {
             val time = cal.get(Calendar.HOUR_OF_DAY)
-            if (9 < time && time < 17){
+            if (9 < time && time < 17) {
                 spinner04.setSelection(0)
-            } else{
+            } else {
                 spinner04.setSelection(1)
             }
         }
