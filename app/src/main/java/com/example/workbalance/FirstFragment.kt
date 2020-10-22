@@ -13,10 +13,12 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_first.*
 import java.util.*
 import java.util.concurrent.Executor
+import androidx.lifecycle.Observer
 
 private lateinit var executor: Executor
 private lateinit var biometricPrompt: BiometricPrompt
 private lateinit var promptInfo: BiometricPrompt.PromptInfo
+private var initdone = 0
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -89,19 +91,18 @@ class FirstFragment : Fragment() {
         spinner04.adapter = customDropDownAdapter
 
         // Pre-selecting correct item in spinner
-        //Location
+        // Setting up location Location
+        (activity as MainActivity).locationLoco.observe(viewLifecycleOwner, Observer {
+            if(initdone > 0){
+                Toast.makeText(context, "longitude: "+(activity as MainActivity).locationCurrent.longitude.toString()+"\nlatitude: "+(activity as MainActivity).locationCurrent.latitude.toString(), Toast.LENGTH_LONG ).show()
+            }
+            initdone++
+        })
 
-        //Location
-        (activity as MainActivity).locationReady = false
+        // Requesting update of location
         (activity as MainActivity).getLocationWithPermissionCheck()
 
-        // Crash
-        //while((activity as MainActivity).locationReady == false){}
-
-        //Toast.makeText(context, (activity as MainActivity).locationCurrent.toString(), Toast.LENGTH_LONG ).show()
-
-
-        //Time
+        // Time
         val cal = Calendar.getInstance()
         val tz = TimeZone.getTimeZone("GMT+2")
         cal.timeZone = tz

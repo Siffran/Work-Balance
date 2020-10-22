@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var drawerLayout: DrawerLayout
     lateinit var locationCurrent: Location
-    var locationReady = false
+    val locationLoco : MutableLiveData<String> =  MutableLiveData<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +46,9 @@ class MainActivity : AppCompatActivity() {
         // Finding the drawerlayout
         drawerLayout = findViewById(R.id.drawerLayout);
 
+        // Setting up location functions
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        locationLoco.value = "Not changed"
     }
 
     /*
@@ -57,14 +60,11 @@ class MainActivity : AppCompatActivity() {
 
     @NeedsPermission(Manifest.permission.ACCESS_FINE_LOCATION)
     fun getLocation() {
-        Toast.makeText(this, "facking shiiiit", Toast.LENGTH_LONG).show()
-
         fusedLocationProviderClient.lastLocation
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful && task.result != null) {
                     locationCurrent = task.result
-                    locationReady = true
-                    Toast.makeText(this, locationCurrent.toString(), Toast.LENGTH_LONG).show()
+                    locationLoco.value = "Changed!"
                 }
             }
 
